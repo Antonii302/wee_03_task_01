@@ -24,12 +24,12 @@ const getAuthorsByLanguage = async (req, res) => {
         return (object.languageCode === languageParam) || (object.regionalLanguage.some((regionLanguage) => regionLanguage === languageParam));
     });
 
-    const countriesRequest = await needle('get', `http://localhost:5000/api/v2/countries/country/${languageCode}`);
+    const countriesRequest = await needle('get', `http://localhost:8080/api/v2/countries/country/${languageCode}`);
     const countries = countriesRequest.body.data;
 
     const { country } = countries;
 
-    const authorsRequest = await needle('get', `http://localhost:3000/api/v2/authors/countries/${country}`);
+    const authorsRequest = await needle('get', `http://localhost:8080/api/v2/authors/countries/${country}`);
     const authorsByLanguage = authorsRequest.body.data;
     
     return res.send(serverResponse(authorsByLanguage));
@@ -42,7 +42,7 @@ const getCountriesByLanguage = async (req, res) => {
         return (object.languageCode === languageParam) || (object.regionalLanguage.some((regionLanguage) => regionLanguage === languageParam));
     });
 
-    const countriesRequest = await needle('get', `http://localhost:5000/api/v2/countries/languages/${languageCode}`);
+    const countriesRequest = await needle('get', `http://localhost:8080/api/v2/countries/languages/${languageCode}`);
     const countriesByLanguage = countriesRequest.body.data;
 
     return res.send(serverResponse(countriesByLanguage));
@@ -55,7 +55,7 @@ const getBooksByLanguage = async (req, res) => {
         return (object.languageCode === languageParam) || (object.regionalLanguage.some((regionLanguage) => regionLanguage === languageParam));
     });
 
-    const countriesRequest = await needle('get', `http://localhost:5000/api/v2/countries/languages/${languageCode}`);
+    const countriesRequest = await needle('get', `http://localhost:8080/api/v2/countries/languages/${languageCode}`);
     const countriesByLanguage = countriesRequest.body.data;
     
     const countries = []
@@ -63,7 +63,7 @@ const getBooksByLanguage = async (req, res) => {
         countries.push(object[1]['name'])
     });
 
-    const booksRequest = await needle('get', `http://localhost:4000/api/v2/books/countries/${countries}`);
+    const booksRequest = await needle('get', `http://localhost:8080/api/v2/books/countries/${countries}`);
     const booksByLanguage = booksRequest.body.data;
 
     return res.send(serverResponse(booksByLanguage));

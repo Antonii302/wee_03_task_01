@@ -97,7 +97,7 @@ router.get('/authors/:capital', async (req, res) => {
 
   const country = countriesByCapital[1]['name'];
 
-  const authorsRequest = await needle('get', `http://localhost:3000/api/v2/authors/countries/${country}`);
+  const authorsRequest = await needle('get', `http://localhost:8080/api/v2/authors/countries/${country}`);
   const authorsByCapital = authorsRequest.body.data;
 
   return res.send(serverResponse(authorsByCapital));
@@ -120,7 +120,7 @@ router.get('/books/:capital', async (req, res) => {
 
   const country = countriesByCapital[1]['name'];
 
-  const booksRequest = await needle('get', `http://localhost:4000/api/v2/books/countries/${country}`);
+  const booksRequest = await needle('get', `http://localhost:8080/api/v2/books/countries/${country}`);
   const booksByCapital = booksRequest.body.data;
 
   return res.send(serverResponse(booksByCapital));

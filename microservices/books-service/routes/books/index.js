@@ -38,7 +38,7 @@ router.get('/authorid/:authorid', (req, res) => {
   const books = data.dataLibrary.books;
   const authorParam = req.params.authorid;
 
-  const author = needle('get', `http://localhost:4000/api/v2/authors/${authorParam}`);
+  const author = needle('get', `http://localhost:8080/api/v2/authors/${authorParam}`);
 
   const booksByAuthor = books.find((book) => {
     return book.authorid.toString() === authorParam;

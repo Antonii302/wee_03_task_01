@@ -101,6 +101,12 @@ Este servicio se llama `books` y utiliza la imagen construida en el directorio `
 Este servicio se llama `country` y utiliza la imagen construida en el directorio `./microservices/country-service`.
 
 ```
+  languages:
+    build: ./microservices/languages-service
+```
+
+Este servicio se llama `language` y utiliza la imagen construida en el directorio `./microservices/language-service`.
+```
   nginx:
     image: nginx:latest
     ports:

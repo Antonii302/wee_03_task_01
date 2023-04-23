@@ -7,158 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "monolithic",
-			"item": [
-				{
-					"name": "books",
-					"item": [
-						{
-							"name": "Get books",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:6000/api/v1/books/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "6000",
-									"path": [
-										"api",
-										"v1",
-										"books",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get books by Title",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:6000/api/v1/books/title/Memoirs",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "6000",
-									"path": [
-										"api",
-										"v1",
-										"books",
-										"title",
-										"Memoirs"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "authors",
-					"item": [
-						{
-							"name": "Get authors",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:6000/api/v1/authors",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "6000",
-									"path": [
-										"api",
-										"v1",
-										"authors"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get authors by ID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:6000/api/v1/authors/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "6000",
-									"path": [
-										"api",
-										"v1",
-										"authors",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get authors by name",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:6000/api/v1/authors/author/Dante",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "6000",
-									"path": [
-										"api",
-										"v1",
-										"authors",
-										"author",
-										"Dante"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "countries",
-					"item": [
-						{
-							"name": "Get countries",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:6000/api/v1/countries",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "6000",
-									"path": [
-										"api",
-										"v1",
-										"countries"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "micro services",
 			"item": [
 				{
@@ -406,7 +254,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/v2/countries/languages/de",
+									"raw": "http://localhost:8080/api/v2/countries/languages/fr",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -417,7 +265,7 @@
 										"v2",
 										"countries",
 										"languages",
-										"de"
+										"fr"
 									]
 								}
 							},
@@ -495,185 +343,7 @@
 					]
 				},
 				{
-					"name": "monolithic",
-					"item": [
-						{
-							"name": "books",
-							"item": [
-								{
-									"name": "Get books",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/books/",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"books",
-												""
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get books by Title",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/books/title/Memoirs",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"books",
-												"title",
-												"Memoirs"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "authors",
-							"item": [
-								{
-									"name": "Get authors",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/authors",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"authors"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get authors by ID",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/authors/1",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"authors",
-												"1"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get authors by name",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/authors/author/Dante",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"authors",
-												"author",
-												"Dante"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "countries",
-							"item": [
-								{
-									"name": "Get countries",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/countries",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"countries"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "details",
-							"item": [
-								{
-									"name": "Get details",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:8080/api/v1/details",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "8080",
-											"path": [
-												"api",
-												"v1",
-												"details"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "languages-temporary",
+					"name": "languages",
 					"item": [
 						{
 							"name": "Get languages",
@@ -744,7 +414,7 @@
 							"response": []
 						},
 						{
-							"name": "Get countries by language Copy",
+							"name": "Get countries by language code",
 							"request": {
 								"method": "GET",
 								"header": [],

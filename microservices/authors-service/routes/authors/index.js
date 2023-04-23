@@ -7,8 +7,6 @@ const router = express.Router();
 // Importamos el módulo data-Library que contiene los datos de los autores
 const data = require("../../data/data-library");
 
-const { multipleSearchInObjectArray, singleSearchInObjectArray } = require('../../helpers/data.helper');
-
 const serverResponse = (data) => {
   return {
     service: "authors",
@@ -30,17 +28,21 @@ router.get("/:authorid", (req, res) => {
   const authors = data.dataLibrary.authors;
   const authorParam = req.params.authorid;
 
-  const authorById = singleSearchInObjectArray(authors, authorParam);
+  const authorById = authors.filter((author) => {
+    return (author.id.toString() === authorParam)
+  });
 
   return res.send(serverResponse(authorById));
-  });
+});
 
 // Creamos la ruta para obtener autores por su nombre
 router.get("/authorname/:authorname", (req, res) => {
   const authors = data.dataLibrary.authors;
   const authorParam = req.params.authorname;
 
-  const authorsByName = multipleSearchInObjectArray(authors, authorParam);
+  const authorsByName = authors.filter((author) => {
+    return (author.author.toString().includes(authorParam))
+  });
   
   return res.send(serverResponse(authorsByName));
 });
@@ -49,12 +51,9 @@ router.get('/countries/:country', (req, res) => {
   const authors = data.dataLibrary.authors;
   const authorParam = req.params.country;
 
-  console.log(authorParam)
   const authorsByCountry = authors.filter((author) => {
     return author.country === authorParam
   });
-
-  console.log(authorsByCountry);
 
   return res.send(serverResponse(authorsByCountry));
 });

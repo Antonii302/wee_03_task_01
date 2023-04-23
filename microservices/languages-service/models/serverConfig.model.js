@@ -4,7 +4,7 @@ const express = require('express');
 module.exports = class ServerConfig {
     constructor() {
         this.app = express();
-        this.port = process.env.PORT || 3001;
+        this.port = process.env.PORT || 6000;
 
         this.routes = {
             languages: '/api/v2/languages'
@@ -26,7 +26,7 @@ module.exports = class ServerConfig {
     turnOn() {
         this.app.listen(this.port, () => {
             // Iniciamos el servidor en el puerto especificado en la variable 'port'
-            console.log(`Language service working in port: ${ process.env.PORT || 3001 }`);
+            console.log(`Language service working in port: ${ this.port}`);
         });
     }
 }

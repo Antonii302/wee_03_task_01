@@ -28,20 +28,19 @@ router.get("/:title", (req, res) => {
   const booksByTitles = books.filter((book) => {
     return book.title.includes(titleParam);
   });
-
-  console.log(booksByTitles)
   
   return res.send(serverResponse(booksByTitles));
 });
 
-router.get('/authorid/:authorid', (req, res) => {
+router.get('/authorid/:authorid', async (req, res) => {
   const books = data.dataLibrary.books;
   const authorParam = req.params.authorid;
 
-  const author = needle('get', `http://localhost:8080/api/v2/authors/${authorParam}`);
+  const author = await needle('get', `http://authors:3000/api/v2/authors/${authorParam}`);
+  const  [{ id }] = await author.body.data;
 
-  const booksByAuthor = books.find((book) => {
-    return book.authorid.toString() === authorParam;
+  const booksByAuthor = books.filter((book) => {
+    return book.authorid === id;
   });
 
   return res.send(serverResponse(booksByAuthor));
@@ -63,7 +62,6 @@ router.get("/countries/:countries", (req, res) => {
   const books = data.dataLibrary.books;
   const countriesParam = req.params.countries.split(',');
 
-  console.log(countriesParam);
   const booksByCountries = [];
   countriesParam.forEach((country) => {
     booksByCountries.push(books.filter((book) => {

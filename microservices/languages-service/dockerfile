@@ -2,6 +2,6 @@ FROM node
 COPY . /app
 WORKDIR /app
 RUN npm install
-ENV PORT 3001
-EXPOSE 3001
+ENV PORT 6000
+EXPOSE 6000
 ENTRYPOINT ["npm", "start"] 

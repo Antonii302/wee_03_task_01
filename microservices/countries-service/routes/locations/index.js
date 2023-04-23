@@ -29,42 +29,27 @@ router.get("/country/:languageCode", (req, res) => {
   const countries = data.dataLibrary.countries;
   const languageCodeparam = req.params.languageCode.toUpperCase();
   
-  const searchResults = {};
+  const countryByLanguageCode = {};
   Object.entries(countries).filter((country) => {
     return country.includes(languageCodeparam)
   }).forEach((array) => {
-    searchResults['languageCode'] = array[0];
-    searchResults['country'] = array[1]['name'];
+    countryByLanguageCode['languageCode'] = array[0];
+    countryByLanguageCode['country'] = array[1]['name'];
   });
-  
-  const response = {
-    service: "countries",
-    architecture: "microservices",
-    length: searchResults.length,
-    data: searchResults
-  };
 
-  return res.send(response);
+  return res.send(serverResponse(countryByLanguageCode));
 });
 
 router.get("/languages/:languageCode", (req, res) => {
-  const lookupValue = req.params.languageCode;
-
+  const languageCodeparam = req.params.languageCode;
   const countries = data.dataLibrary.countries;
 
-  const searchResults = Object.entries(countries).filter((country) => {
+  const countryByLanguage = Object.entries(countries).filter((country) => {
     const countryDetails = country[1];
-    return countryDetails['languages'].includes(lookupValue);
+    return countryDetails['languages'].includes(languageCodeparam);
   });
 
-  const response = {
-    service: "countries",
-    architecture: "microservices",
-    length: searchResults.length,
-    data: searchResults
-  };
-
-  return res.send(response);
+  return res.send(serverResponse(countryByLanguage));
 });
 
 router.get('/capital/:capital', (req, res) => {
@@ -75,7 +60,6 @@ router.get('/capital/:capital', (req, res) => {
     const countryDetails = country[1];
     return countryDetails['capital'] === countriesParam;
   });
-
 
   return res.send(serverResponse(countriesByCapital));
 });
@@ -97,7 +81,7 @@ router.get('/authors/:capital', async (req, res) => {
 
   const country = countriesByCapital[1]['name'];
 
-  const authorsRequest = await needle('get', `http://localhost:8080/api/v2/authors/countries/${country}`);
+  const authorsRequest = await needle('get', `http://authors:3000/api/v2/authors/countries/${country}`);
   const authorsByCapital = authorsRequest.body.data;
 
   return res.send(serverResponse(authorsByCapital));
@@ -120,7 +104,7 @@ router.get('/books/:capital', async (req, res) => {
 
   const country = countriesByCapital[1]['name'];
 
-  const booksRequest = await needle('get', `http://localhost:8080/api/v2/books/countries/${country}`);
+  const booksRequest = await needle('get', `http://books:4000/api/v2/books/countries/${country}`);
   const booksByCapital = booksRequest.body.data;
 
   return res.send(serverResponse(booksByCapital));

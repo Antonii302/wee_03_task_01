@@ -1,6 +1,3 @@
-run monolithic:
-`npm start`
-
 run microservice:
 `docker-compose up --build`
 or
@@ -72,11 +69,6 @@ services:
 
 Este bloque define los servicios que se ejecutarán en contenedores separados.
 
-```
-  monolithic:
-    build: ./monolithic
-```
-
 Este servicio se llama `monolithic` y utiliza la imagen construida en el directorio `./monolithic`.
 
 ```
@@ -114,10 +106,10 @@ Este servicio se llama `language` y utiliza la imagen construida en el directori
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - monolithic
       - users
       - books
       - country
+      - languages
 ```
 
 Este servicio se llama `nginx` y utiliza la imagen `nginx:latest` de Docker Hub. Se define un mapeo de puertos entre el puerto 8080 del contenedor y el puerto 8080 de la máquina host. También se define un volumen que vincula el archivo `nginx.conf` en el directorio actual con el archivo de configuración de nginx en el contenedor. Por último, se especifica que `nginx` depende de los servicios `monolithic`, `users`, `books` y `country`.
